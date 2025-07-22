@@ -37,6 +37,13 @@ Step into the gritty atmosphere of Fortuna III where prospectors gather to trade
 
 ## 📊 **Latest Updates (V2 - TTK Combat System & Armor Integration)**
 
+### **🔧 Recent Bug Fixes & Improvements**
+- **Weekly command fix** - Resolved datetime parsing error in weekly bonus system
+- **Server-scoped data management** - All admin commands properly isolated to individual servers
+- **Admin armor dropdown** - Added dropdown selection system for `/admin-give-armor` command
+- **Beta management system** - Complete beta access control with role assignment and welcome messages
+- **Bilingual beta support** - English and Russian language support for beta access messages
+
 ### **⚔️ Revolutionary TTK-Based Combat System**
 - **Real TCF weapon data** - combat system uses actual TTK values from The Cycle: Frontier weapon calculators
 - **12 combat scenarios** - range (25m/50m/100m), accuracy (75%/100%), and weakspot (0%/25%) combinations
@@ -96,6 +103,7 @@ Step into the gritty atmosphere of Fortuna III where prospectors gather to trade
 - **Context-aware operations** - all commands automatically use correct server context
 - **Input validation** - prevents server ID manipulation and unauthorized access
 - **Error isolation** - failures in one server don't affect others
+- **Server-scoped data removal** - admin commands only affect data within the specific server
 
 ---
 
@@ -204,6 +212,28 @@ SMG > Shotgun > AR > DMR > Sniper > Charge Rifle > LMG > Heavy Weapon > Pistol >
 - **Weapon showcase** galleries in your prospector profile
 - **Combat replay** system with detailed duel breakdowns
 
+### **🔔 Beta Management System** *(New)*
+- **Complete beta access control** with role assignment and welcome messages
+- **Automatic welcome messages** when users get the beta role
+- **Bilingual support** - English and Russian language messages for beta access
+- **Admin management** - easy setup, user acceptance, listing, and removal of beta access
+- **Server-scoped** - beta system only works within the server it's configured for
+
+#### **Beta System Workflow**
+1. **Setup** - Admin configures beta role, welcome channel, and message
+2. **Accept Users** - Admin manually accepts users into beta with `/admin-beta-accept @user`
+3. **Automatic Welcome** - System sends welcome message when users get beta role
+4. **Status Check** - Users can check their beta status with `/beta`
+5. **Management** - Admins can list, remove individual users, or clear all beta access
+
+#### **Beta Commands**
+- **`/beta`** - Check your beta access status (bilingual response)
+- **`/admin-beta-setup`** - Configure beta system (role, channel, message)
+- **`/admin-beta-accept @user`** - Accept user into beta
+- **`/admin-beta-list`** - List all beta users
+- **`/admin-beta-clear @user`** - Remove specific user's beta access
+- **`/admin-beta-clear`** - Clear all beta access (with confirmation)
+
 ---
 
 ## 🎯 **Perfect For Prospectors**
@@ -219,7 +249,7 @@ SMG > Shotgun > AR > DMR > Sniper > Charge Rifle > LMG > Heavy Weapon > Pistol >
 
 1. **Join Fortuna's Deal** - Badum will greet you personally with server-specific welcome
 2. **Check your K-Marks** with `/k-marks` - basic station courtesy gives you starter currency
-3. **Buy your first crate** with `/weapon-crate` - hear Badum's salvage stories (250 K-Marks)
+3. **Buy your first crate** with `/weapon-crate` - hear Badum's salvage stories (325 K-Marks)
 4. **Challenge someone** with `/duel @player` then select your weapon - settle it the old way
 5. **Build your reputation** on your server and survive in the competitive prospector scene!
 
@@ -233,7 +263,7 @@ SMG > Shotgun > AR > DMR > Sniper > Charge Rifle > LMG > Heavy Weapon > Pistol >
 | `/k-marks` | Check your K-Marks balance | "Know what you're worth, Prospector" |
 | `/inventory [@user]` | View weapon collection | "Check your gear, Prospector" |
 | `/armor [@user]` | View armor collection | "Protection's worth its weight on Fortuna" |
-| `/weapon-crate` | Open a weapon crate (250 K-Marks) | "Collection crates, damn useful" |
+| `/weapon-crate` | Open a weapon crate (325 K-Marks) | "Collection crates, damn useful" |
 | `/armor-crate` | Claim free armor (4hr cooldown) | "Corps gear, lost to the Cycle" |
 | `/daily` | Claim daily bonus (100 K-Marks) | "Station's been good to you today" |
 | `/weekly` | Claim weekly bonus (500 K-Marks) | "Consider this a favor from the house" |
@@ -242,13 +272,21 @@ SMG > Shotgun > AR > DMR > Sniper > Charge Rifle > LMG > Heavy Weapon > Pistol >
 | `/accept` | Accept a duel challenge | "Time to prove yourself" |
 | `/decline` | Decline a duel challenge | "Smart choice, sometimes" |
 | `/duel-stats [@user]` | View win/loss record | "Reputation matters on the station" |
+| `/beta` | Check beta access status | "See if you're in the closed beta" |
 
 ### **🛡️ Admin Commands** *(Requires Discord Admin Permissions)*
 | Command | Description | Admin Notes |
 |---------|-------------|-------------|
 | `/admin-give-kmarks @user <amount>` | Grant K-Marks to a user | Server-specific currency management |
 | `/admin-give-weapon @user` | Give weapon to user (dropdown) | Add weapons to player inventory |
+| `/admin-give-armor @user` | Give armor to user (dropdown) | Add armor to player inventory |
 | `/admin-reset-user @user` | Reset user's data | Removes all server data for user |
+| `/admin-clear-user @user` | Clear user's data | Resets to 100 K-Marks, removes all items |
+| `/admin-beta-setup` | Setup beta system | Configure beta role, channel, and welcome message |
+| `/admin-beta-accept @user` | Accept user into beta | Grant beta access and send welcome message |
+| `/admin-beta-list` | List beta users | View all users with beta access |
+| `/admin-beta-clear @user` | Remove user's beta access | Remove beta role from specific user |
+| `/admin-beta-clear` | Clear all beta access | Remove beta role from all users (with warning) |
 | `/admin-stats` | View server statistics | K-Marks, users, weapons summary |
 | `/admin-list-weapons` | Show all available weapons | Complete weapon database reference |
 
